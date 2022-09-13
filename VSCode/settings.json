@@ -1,0 +1,37 @@
+{
+    "python.defaultInterpreterPath": "/Users/kalle/miniconda3/envs/data-analysis/bin/python",
+    "python.formatting.blackArgs": [
+        "--line-length=120"
+    ],
+    "python.sortImports.args": [
+        "--profile",
+        "black"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#e788ff7c", //Currently SELECTED text
+        "editor.selectionHighlightBackground": "#ff00005b", //Same content as selection
+        "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+        "editor.findMatchHighlightBackground": "#ff7b00a1", //Other SEARCH MATCHES
+    },
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/Users/kalle/miniconda3/envs/data-analysis/bin/black",
+    "editor.formatOnSave": false,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "workbench.settings.useSplitJSON": true,
+    "json.schemaDownload.enable": false,
+    "telemetry.telemetryLevel": "off",
+    "autoDocstring.docstringFormat": "numpy",
+}
