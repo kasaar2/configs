@@ -1,1 +1,6 @@
-
+[
+    {
+        "key": "ctrl+alt+v",
+        "command": "toogleVim"
+    }
+]
