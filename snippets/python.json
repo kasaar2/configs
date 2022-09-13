@@ -1,5 +1,5 @@
 {
-"Standard imports": {
+    "Standard imports": {
 		"prefix": "imp",
 		"body": [
 			"import pandas as pd",
@@ -13,5 +13,18 @@
 			"$0"
 		],
 		"description": "Import standard libraries for data analysis"
-	}	
+	},
+    "If name equals main": {
+        "prefix": "main",
+        "body": [
+            "if __name__ == '__main__':",
+            "   import argparse",
+            "   parser = argparse.ArgumentParser()",
+            "   parser.add_argument('positional')",
+            "   parser.add_argument('--flag')",
+            "   parser.add_argument()",
+            "   ",
+            "   $0"
+        ],
+        "description": "if __name__ == __main__ ..."
 }
