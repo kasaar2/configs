@@ -1,0 +1,17 @@
+{
+"Standard imports": {
+		"prefix": "imp",
+		"body": [
+			"import pandas as pd",
+			"import numpy as np",
+			"import matplotlib.pyplot as plt",
+			"import seaborn as sns",
+			"",
+			"pd.options.display.max_rows = 200",
+			"pd.options.display.max_colwidth = 200",
+
+			"$0"
+		],
+		"description": "Import standard libraries for data analysis"
+	}	
+}
