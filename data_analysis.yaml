@@ -1,0 +1,18 @@
+name: data-analysis
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - altair
+  - scikit-learn
+  - seaborn
+  - ipython
+  - jupyter
+  - matplotlib
+  - spacy
+  - pandas
+  - networkx
+  - black
+  - pip:
+    - loguru
+prefix: /Users/kalle/miniconda3/envs/data-analysis
