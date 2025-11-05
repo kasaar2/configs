@@ -27,11 +27,6 @@ alias jpn="jupyter notebook"
 alias ipn='ipython --no-banner -c "import numpy as np" -i'
 alias ipp='ipython --no-banner -c "import numpy as np; import pandas as pd" -i'
 
-alias v='nvim'
-alias vim='nvim'
-
-alias rg="/opt/homebrew/Cellar/ripgrep/13.0.0/bin/rg"
-
 #######
 # Git #
 #######
