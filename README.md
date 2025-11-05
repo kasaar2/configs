@@ -242,6 +242,10 @@ ev         # edit .vimrc
 gm This is a commit message  # Git commit without quotes
 git-frequent                  # Show most used Python methods in repo
 line <file> <start> <count>  # Print specific lines from file
+
+# Directory navigation with history
+dl                            # List last 20 visited directories
+dj <N>                        # Jump to Nth directory from dl list
 ```
 
 ## Customization
