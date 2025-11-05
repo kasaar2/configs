@@ -1,4 +1,3 @@
-
 ###########
 # General #
 ###########
@@ -9,11 +8,13 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias l="ls -lsthrG"
     alias la="ls -lasthrG"
-fi 
+fi
 
 alias p="pwd"
 alias d="cd"
 alias u="cd .."
+alias uu="cd ../.."
+alias uuu="cd ../../.."
 alias dp="cd ~/Desktop"
 
 alias ez="vim ~/.zshrc"
@@ -28,7 +29,6 @@ alias ipp='ipython --no-banner -c "import numpy as np; import pandas as pd" -i'
 
 alias v='nvim'
 alias vim='nvim'
-
 
 alias rg="/opt/homebrew/Cellar/ripgrep/13.0.0/bin/rg"
 
@@ -46,36 +46,20 @@ alias gcm="git commit -m"
 alias gco="git checkout"
 alias gb="git branch"
 alias gw="git add -u; git commit -m wip"
-alias gl=" git log --name-status"
+alias gl="git log --name-status"
+alias gpl="git pull"
+alias gps="git push"
+alias glog="git log --graph --oneline --decorate"
 
-function gp() {
-	# Grep with directory-scope search and colored output
-	grep --color -n  -i -p $1 *
-}
+#########
+# Python/Conda #
+#########
 
-function gm() {
-    # Commit without quotes around the message:
-    #    $ gm This is commit message without wuotes
-    git commit -m "$*"
-}
-
-function git-frequent() {
-    # Print out the most commonly used Python methods in a repository
-    git grep -i -o -w ' [a-z_0-9]\+(' . | cut -f2 -d':' | sort | uniq -c | sort -nrk1,1 | less
-}
-
+alias ca='conda activate'
+alias cda='conda deactivate'
 
 #######
 # Mac #
 #######
 
 alias cc="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
-
-# https://apple.stackexchange.com/a/33679
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx\n
-
-function line() {
-	# Print lines in file $1 between $2 and $3 
-	head -n $(($2 + $3))  $1 | tail -n $3
-}
