@@ -243,8 +243,8 @@ gm This is a commit message  # Git commit without quotes
 git-frequent                  # Show most used Python methods in repo
 line <file> <start> <count>  # Print specific lines from file
 
-# Directory navigation with history
-dl                            # List last 20 visited directories
+# Directory navigation (uses built-in directory stack)
+dl                            # List directory stack (visited directories)
 dj <N>                        # Jump to Nth directory from dl list
 ```
 
