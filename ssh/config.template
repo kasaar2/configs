@@ -1,0 +1,89 @@
+# SSH Configuration Template
+# Copy this file to ~/.ssh/config and customize for your needs
+# Usage: cp ssh/config.template ~/.ssh/config
+
+# Global defaults for all hosts
+Host *
+    # Add SSH keys to agent automatically (macOS)
+    AddKeysToAgent yes
+
+    # Use macOS keychain for SSH keys (macOS only)
+    # UseKeychain yes
+
+    # Keep connections alive
+    ServerAliveInterval 60
+    ServerAliveCountMax 10
+
+    # Connection multiplexing for faster subsequent connections
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 600
+
+    # Forward agent for git operations on remote servers
+    ForwardAgent no
+
+    # Preferred authentication methods
+    PreferredAuthentications publickey,keyboard-interactive,password
+
+# GitHub
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    # Or use your specific key: IdentityFile ~/.ssh/github_key
+
+# GitHub (alternate alias)
+Host gh
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+# GitLab
+Host gitlab.com
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+# Bitbucket
+Host bitbucket.org
+    HostName bitbucket.org
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+# Example: Personal Server
+# Host myserver
+#     HostName 192.168.1.100
+#     User username
+#     Port 22
+#     IdentityFile ~/.ssh/id_rsa
+#     ForwardAgent yes
+
+# Example: Work Server with Jump Host
+# Host work-internal
+#     HostName internal.company.com
+#     User your.username
+#     ProxyJump bastion.company.com
+#     IdentityFile ~/.ssh/work_key
+
+# Example: AWS EC2 Instance
+# Host aws-prod
+#     HostName ec2-xx-xxx-xxx-xxx.compute.amazonaws.com
+#     User ec2-user
+#     IdentityFile ~/.ssh/aws-keypair.pem
+#     StrictHostKeyChecking no
+
+# Example: Short alias for frequently used server
+# Host dev
+#     HostName dev.example.com
+#     User developer
+#     Port 2222
+#     IdentityFile ~/.ssh/id_rsa
+#     LocalForward 8080 localhost:8080
+
+# Setup Instructions:
+# 1. Copy this file: cp ssh/config.template ~/.ssh/config
+# 2. Create socket directory: mkdir -p ~/.ssh/sockets
+# 3. Set permissions: chmod 700 ~/.ssh && chmod 600 ~/.ssh/config
+# 4. Generate SSH key if needed: ssh-keygen -t ed25519 -C "your.email@example.com"
+# 5. Add key to agent: ssh-add ~/.ssh/id_ed25519
+# 6. Copy public key to remote: ssh-copy-id user@host

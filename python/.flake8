@@ -1,0 +1,51 @@
+# Flake8 Configuration
+# Copy this file to your project root
+# Usage: cp python/.flake8 /path/to/your/project/
+
+[flake8]
+# Set maximum line length to match Black
+max-line-length = 120
+
+# Maximum complexity for McCabe
+max-complexity = 10
+
+# Ignore specific error codes
+# E203: whitespace before ':' (conflicts with Black)
+# E501: line too long (handled by Black)
+# W503: line break before binary operator (conflicts with Black)
+# W504: line break after binary operator
+# E402: module level import not at top of file
+ignore = E203, E501, W503, W504
+
+# Exclude directories
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    .eggs,
+    *.egg,
+    build,
+    dist,
+    .tox,
+    .mypy_cache,
+    .pytest_cache,
+    notebooks
+
+# Count errors
+count = True
+
+# Show source code for each error
+show-source = True
+
+# Print total number of errors
+statistics = True
+
+# Enable specific plugins (install separately if needed)
+# select = E,W,F,C,N
+
+# Per-file ignores (example)
+# per-file-ignores =
+#     __init__.py: F401
+#     tests/*: F401,F811
