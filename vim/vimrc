@@ -1,0 +1,49 @@
+set nocompatible
+set number
+
+syntax on
+
+" Smart case in search. Both of the following statements are needed
+set ignorecase
+set smartcase
+
+set smartindent
+
+" Recognize file type to activate syntax highlighting, set options, etc.
+filetype on
+filetype plugin indent on
+
+" Highlight search results
+set hlsearch
+
+" Let Delete key work as expected
+set backspace=indent,eol,start
+
+" Display line and column numbers on bottom left corner
+set ruler
+
+" Modify status line
+set statusline=%f       " Path to the file
+set statusline+=\ %2c   " Cursor position in row
+set statusline+=%=      " Switch to the right side
+set statusline+=%l      " Current line
+set statusline+=/       " Separator
+set statusline+=%L      " Total lines
+set laststatus=2        " Make statusline visible
+
+" Python-specific settings
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set textwidth=120
+au BufNewfile,BufRead *.py set expandtab
+au BufNewfile,BufRead *.py set autoindent
+au BufNewfile,BufRead *.py set fileformat=unix
+
+" Text file settings
+au BufNewFile,BufRead *.txt set tabstop=2
+au BufNewFile,BufRead *.txt set softtabstop=2
+au BufNewFile,BufRead *.txt set shiftwidth=2
+au BufNewfile,BufRead *.txt set expandtab
+au BufNewfile,BufRead *.txt set autoindent
+au BufNewfile,BufRead *.txt set fileformat=unix
