@@ -31,20 +31,13 @@ alias ipp='ipython --no-banner -c "import numpy as np; import pandas as pd" -i'
 # Git #
 #######
 
-alias ga="git add"
-alias gu="git add -u"
-alias gd="git diff"
-alias gdc="git diff --cached"
-alias gs="git status"
-alias gc="git commit -v"
-alias gcm="git commit -m"
-alias gco="git checkout"
-alias gb="git branch"
-alias gw="git add -u; git commit -m wip"
-alias gl="git log --name-status"
-alias gpl="git pull"
-alias gps="git push"
-alias glog="git log --graph --oneline --decorate"
+alias ga="git add"                                        # Stage files for commit
+alias gu="git add -u"                                     # Stage all modified and deleted files
+alias gd="git diff"                                       # Show unstaged changes
+alias gdc="git diff --cached"                             # Show staged changes
+alias gs="git status --untracked-files=no"                # Show status without untracked files
+alias gc="git checkout"                                   # Switch branches or restore files
+alias gl="git log --graph --oneline --decorate"           # Show compact commit history with graph
 
 #########
 # Python/Conda #
