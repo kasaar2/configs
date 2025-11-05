@@ -11,3 +11,6 @@ export HISTSIZE=10000
 export HISTFILESIZE=20000
 export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="%F %T "
+
+# Python
+export PYTHONBREAKPOINT="ipdb.set_trace"
