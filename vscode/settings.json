@@ -1,37 +1,72 @@
 {
+    // Python interpreter path for the data-analysis conda environment
     "python.defaultInterpreterPath": "/Users/kalle/miniconda3/envs/data-analysis/bin/python",
+
+    // Black formatter configuration: set line length to 120 characters
     "python.formatting.blackArgs": [
         "--line-length=120"
     ],
+
+    // Configure import sorting to be compatible with Black formatting
     "python.sortImports.args": [
         "--profile",
         "black"
     ],
+
+    // Automatically open untrusted files without prompting
     "security.workspace.trust.untrustedFiles": "open",
+
+    // Custom color scheme for editor highlighting
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#e788ff7c", //Currently SELECTED text
         "editor.selectionHighlightBackground": "#ff00005b", //Same content as selection
         "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
         "editor.findMatchHighlightBackground": "#ff7b00a1", //Other SEARCH MATCHES
     },
+
+    // Environment variables for integrated terminal on macOS
     "terminal.integrated.env.osx": {
         "FIG_NEW_SESSION": "1"
     },
+
+    // Use Black as the Python code formatter
     "python.formatting.provider": "black",
+
+    // Path to Black formatter executable
     "python.formatting.blackPath": "/Users/kalle/miniconda3/envs/data-analysis/bin/black",
+
+    // Disable automatic formatting when saving files
     "editor.formatOnSave": false,
+
+    // Python-specific editor settings
     "[python]": {
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": true  // Automatically organize imports on save
         },
-        "editor.defaultFormatter": "ms-python.python"
+        "editor.defaultFormatter": "ms-python.python"  // Use Python extension for formatting
     },
-    "breadcrumbs.enabled": false,
+
+    // Enable breadcrumb navigation at the top of the editor
+    "breadcrumbs.enabled": true,
+
+    // Disable the minimap (code overview) on the right side
     "editor.minimap.enabled": false,
+
+    // Don't render whitespace characters
     "editor.renderWhitespace": "none",
+
+    // Don't render control characters
     "editor.renderControlCharacters": false,
+
+    // Use split JSON editor for settings
     "workbench.settings.useSplitJSON": true,
+
+    // Disable automatic JSON schema downloads
     "json.schemaDownload.enable": false,
+
+    // Disable telemetry data collection
     "telemetry.telemetryLevel": "off",
-    "autoDocstring.docstringFormat": "numpy",
+
+    // Show medium-length labels in editor tabs (includes folder name)
+    "workbench.editor.labelFormat": "medium",
 }
