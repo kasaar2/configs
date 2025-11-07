@@ -14,6 +14,7 @@ INSTALL_VIM=false
 INSTALL_GIT=false
 INSTALL_PYTHON=false
 INSTALL_VSCODE=false
+INSTALL_P10K=false
 INSTALL_ALL=false
 
 # Parse command line arguments
@@ -30,6 +31,7 @@ OPTIONS:
     --git           Install Git configuration
     --python        Set up Python/Conda environment
     --vscode        Install VSCode settings (interactive)
+    --p10k          Install and configure Powerlevel10k theme
     --help, -h      Show this help message
 
 EXAMPLES:
@@ -77,6 +79,10 @@ else
                 INSTALL_VSCODE=true
                 shift
                 ;;
+            --p10k)
+                INSTALL_P10K=true
+                shift
+                ;;
             --help|-h)
                 show_help
                 exit 0
@@ -97,6 +103,7 @@ if [ "$INSTALL_ALL" = true ]; then
     INSTALL_GIT=true
     INSTALL_PYTHON=true
     INSTALL_VSCODE=true
+    INSTALL_P10K=true
 fi
 
 echo "======================================"
@@ -110,6 +117,7 @@ echo "Installing:"
 [ "$INSTALL_GIT" = true ] && echo "  ✓ Git configuration"
 [ "$INSTALL_PYTHON" = true ] && echo "  ✓ Python environment"
 [ "$INSTALL_VSCODE" = true ] && echo "  ✓ VSCode settings"
+[ "$INSTALL_P10K" = true ] && echo "  ✓ Powerlevel10k theme"
 echo ""
 
 # Function to backup a file if it exists
@@ -137,7 +145,7 @@ create_symlink() {
 
 # Counter for installation steps
 STEP=1
-TOTAL_STEPS=$(( INSTALL_SHELL + INSTALL_VIM + INSTALL_GIT + INSTALL_PYTHON + INSTALL_VSCODE ))
+TOTAL_STEPS=$(( INSTALL_SHELL + INSTALL_VIM + INSTALL_GIT + INSTALL_PYTHON + INSTALL_VSCODE + INSTALL_P10K ))
 
 # Install Vim config
 if [ "$INSTALL_VIM" = true ]; then
@@ -252,6 +260,27 @@ if [ "$INSTALL_VSCODE" = true ]; then
     else
         echo "  ⚠️  VSCode user directory not found."
         echo "  Manual installation required. See README.md for instructions."
+    fi
+    echo ""
+    ((STEP++))
+fi
+
+# Install Powerlevel10k
+if [ "$INSTALL_P10K" = true ]; then
+    echo "[$STEP/$TOTAL_STEPS] Installing Powerlevel10k theme..."
+
+    if [ -f "$REPO_DIR/terminal/setup_p10k.sh" ]; then
+        read -p "  Run Powerlevel10k setup script now? (y/n) " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            bash "$REPO_DIR/terminal/setup_p10k.sh"
+        else
+            echo "  ⚠️  Skipped Powerlevel10k installation"
+            echo "  To install later, run: $REPO_DIR/terminal/setup_p10k.sh"
+        fi
+    else
+        echo "  ⚠️  Powerlevel10k setup script not found"
+        echo "  See $REPO_DIR/terminal/POWERLEVEL10K_SETUP.md for manual setup"
     fi
     echo ""
     ((STEP++))

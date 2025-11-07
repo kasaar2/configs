@@ -48,6 +48,7 @@ source ~/.zshrc  # or ~/.bashrc
 ### 💻 Terminal
 - **iTerm2 profile** for macOS
 - **tmux.conf** - Feature-rich tmux configuration with vim keybindings
+- **Powerlevel10k** - Beautiful and fast Zsh theme with pre-configured settings
 
 ### 🔐 SSH Configuration
 - **config.template** - SSH config template with GitHub, GitLab examples
@@ -84,8 +85,11 @@ configs/
 ├── ssh/
 │   └── config.template      # SSH configuration template
 └── terminal/
-    ├── iTermProfile.json    # iTerm2 profile
-    └── tmux.conf            # Tmux configuration
+    ├── iTermProfile.json         # iTerm2 profile
+    ├── tmux.conf                 # Tmux configuration
+    ├── p10k.zsh                  # Powerlevel10k theme config
+    ├── setup_p10k.sh             # Automated P10k installer
+    └── POWERLEVEL10K_SETUP.md    # P10k setup documentation
 ```
 
 ## Installation Details
@@ -102,6 +106,7 @@ The enhanced `install.sh` script now supports selective installation:
 ./install.sh --shell --vim      # Just shell and vim
 ./install.sh --git              # Only git configuration
 ./install.sh --python           # Python environment setup
+./install.sh --p10k             # Powerlevel10k theme only
 
 # See all options
 ./install.sh --help
@@ -114,6 +119,7 @@ The enhanced `install.sh` script now supports selective installation:
 - `--git` - Git configuration (automated)
 - `--python` - Python/Conda environment (interactive)
 - `--vscode` - VSCode settings (automated, platform-aware)
+- `--p10k` - Powerlevel10k theme (interactive)
 
 **The script will:**
 1. ✅ Back up existing configurations with timestamp
@@ -138,6 +144,7 @@ The enhanced `install.sh` script now supports selective installation:
 | Git config | `~/.gitconfig`, `~/.gitignore_global` | Copy | `--git` |
 | VSCode settings | Platform-specific User directory | Copy | `--vscode` |
 | Python env | Conda environment | Interactive | `--python` |
+| Powerlevel10k | `~/.p10k.zsh`, Oh My Zsh theme | Copy/Install | `--p10k` |
 
 ## Additional Setup
 
@@ -162,6 +169,32 @@ chmod 700 ~/.ssh && chmod 600 ~/.ssh/config
 
 # Generate SSH key if needed
 ssh-keygen -t ed25519 -C "your.email@example.com"
+```
+
+### Powerlevel10k Theme
+
+**Quick Setup (Recommended):**
+```bash
+# Automated installation with your pre-configured theme
+./terminal/setup_p10k.sh
+
+# Or via install script
+./install.sh --p10k
+```
+
+**What it does:**
+- Installs Oh My Zsh (if not present)
+- Installs Nerd Font (macOS with Homebrew)
+- Clones Powerlevel10k theme
+- Configures your .zshrc
+- Applies your custom theme settings
+
+**Manual Setup:**
+See [terminal/POWERLEVEL10K_SETUP.md](terminal/POWERLEVEL10K_SETUP.md) for detailed instructions.
+
+**Reconfigure:**
+```bash
+p10k configure  # Run configuration wizard
 ```
 
 ### Tmux Configuration
