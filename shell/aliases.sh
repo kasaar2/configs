@@ -35,9 +35,11 @@ alias gd="git diff"                                       # Show unstaged change
 alias gdc="git diff --cached"                             # Show staged changes
 alias gs="git status --untracked-files=no"                # Show status without untracked files
 alias gc="git checkout"                                   # Switch branches or restore files
-alias gl="git log --oneline"                              # Show compact commit history
+alias gcm="git checkout main"                             # Switch branch to main
+alias gl="git --no-pager log --oneline -n 10"                              # Show compact commit history
 alias gg="git log --graph --oneline --decorate"           # Show compact commit history with graph
 alias gp="git pull" 
+alias gf="git fetch" 
 
 ################
 # Python/Conda #
