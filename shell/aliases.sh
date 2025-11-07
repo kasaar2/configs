@@ -8,19 +8,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias l="ls -lsthrG"
     alias la="ls -lasthrG"
+    alias cc="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 fi
 
 alias p="pwd"
 alias d="cd"
 alias u="cd .."
-alias uu="cd ../.."
-alias uuu="cd ../../.."
 alias dp="cd ~/Desktop"
 
 alias ez="vim ~/.zshrc"
-alias sz="echo 'sourcing .zshrc'; source ~/.zshrc"
+alias sz="echo 'Sourcing .zshrc'; source ~/.zshrc"
 alias ev="vim ~/.vimrc"
-alias sv="source ~/.vimrc"
 
 alias ip="ipython"
 alias jpn="jupyter notebook"
@@ -37,17 +35,14 @@ alias gd="git diff"                                       # Show unstaged change
 alias gdc="git diff --cached"                             # Show staged changes
 alias gs="git status --untracked-files=no"                # Show status without untracked files
 alias gc="git checkout"                                   # Switch branches or restore files
-alias gl="git log --graph --oneline --decorate"           # Show compact commit history with graph
+alias gl="git log --oneline"                              # Show compact commit history
+alias gg="git log --graph --oneline --decorate"           # Show compact commit history with graph
+alias gp="git pull" 
 
-#########
+################
 # Python/Conda #
-#########
+################
 
-alias ca='conda activate'
+alias cac='conda activate'
 alias cda='conda deactivate'
 
-#######
-# Mac #
-#######
-
-alias cc="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
