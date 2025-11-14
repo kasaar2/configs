@@ -15,6 +15,7 @@ INSTALL_GIT=false
 INSTALL_PYTHON=false
 INSTALL_VSCODE=false
 INSTALL_P10K=false
+INSTALL_CLAUDE=false
 INSTALL_ALL=false
 
 # Parse command line arguments
@@ -32,6 +33,7 @@ OPTIONS:
     --python        Set up Python/Conda environment
     --vscode        Install VSCode settings (interactive)
     --p10k          Install and configure Powerlevel10k theme
+    --claude        Install Claude Code settings
     --help, -h      Show this help message
 
 EXAMPLES:
@@ -83,6 +85,10 @@ else
                 INSTALL_P10K=true
                 shift
                 ;;
+            --claude)
+                INSTALL_CLAUDE=true
+                shift
+                ;;
             --help|-h)
                 show_help
                 exit 0
@@ -104,6 +110,7 @@ if [ "$INSTALL_ALL" = true ]; then
     INSTALL_PYTHON=true
     INSTALL_VSCODE=true
     INSTALL_P10K=true
+    INSTALL_CLAUDE=true
 fi
 
 echo "======================================"
@@ -118,6 +125,7 @@ echo "Installing:"
 [ "$INSTALL_PYTHON" = true ] && echo "  ✓ Python environment"
 [ "$INSTALL_VSCODE" = true ] && echo "  ✓ VSCode settings"
 [ "$INSTALL_P10K" = true ] && echo "  ✓ Powerlevel10k theme"
+[ "$INSTALL_CLAUDE" = true ] && echo "  ✓ Claude Code settings"
 echo ""
 
 # Function to backup a file if it exists
@@ -145,7 +153,7 @@ create_symlink() {
 
 # Counter for installation steps
 STEP=1
-TOTAL_STEPS=$(( INSTALL_SHELL + INSTALL_VIM + INSTALL_GIT + INSTALL_PYTHON + INSTALL_VSCODE + INSTALL_P10K ))
+TOTAL_STEPS=$(( INSTALL_SHELL + INSTALL_VIM + INSTALL_GIT + INSTALL_PYTHON + INSTALL_VSCODE + INSTALL_P10K + INSTALL_CLAUDE ))
 
 # Install Vim config
 if [ "$INSTALL_VIM" = true ]; then
@@ -282,6 +290,21 @@ if [ "$INSTALL_P10K" = true ]; then
         echo "  ⚠️  Powerlevel10k setup script not found"
         echo "  See $REPO_DIR/terminal/POWERLEVEL10K_SETUP.md for manual setup"
     fi
+    echo ""
+    ((STEP++))
+fi
+
+# Install Claude Code settings
+if [ "$INSTALL_CLAUDE" = true ]; then
+    echo "[$STEP/$TOTAL_STEPS] Installing Claude Code settings..."
+
+    CLAUDE_DIR="$HOME/.claude"
+    mkdir -p "$CLAUDE_DIR"
+
+    backup_if_exists "$CLAUDE_DIR/settings.json"
+    cp "$REPO_DIR/claude-code/settings.json" "$CLAUDE_DIR/settings.json"
+
+    echo "  ✓ Copied settings.json to ~/.claude/settings.json"
     echo ""
     ((STEP++))
 fi

@@ -143,6 +143,22 @@ if [ -f "$HOME/.gitignore_global" ]; then
 fi
 echo ""
 
+echo "Step 4: Removing Claude Code configuration..."
+if [ -f "$HOME/.claude/settings.json" ]; then
+    read -p "  Remove ~/.claude/settings.json? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        safe_remove "$HOME/.claude/settings.json"
+        if [ "$RESTORE" = true ]; then
+            restore_file "settings.json" "$HOME/.claude/settings.json" || echo "  No backup found for settings.json"
+        fi
+        echo "  Note: The ~/.claude directory was not removed (may contain other files)"
+    fi
+else
+    echo "  No Claude Code settings found"
+fi
+echo ""
+
 echo "======================================"
 echo "Uninstall Complete!"
 echo "======================================"
@@ -151,6 +167,7 @@ echo "Notes:"
 echo "  - Shell changes will take effect after restarting your terminal"
 echo "  - VSCode settings (if installed) were not removed"
 echo "  - Python conda environment (if created) was not removed"
+echo "  - Claude Code settings handled interactively (if installed)"
 echo "  - To remove conda env: conda env remove -n data-analysis"
 echo ""
 

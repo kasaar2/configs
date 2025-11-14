@@ -1,0 +1,9 @@
+{
+  "alwaysThinkingEnabled": false,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "OTEL_METRICS_EXPORTER": "otlp"
+  },
+  "includeCoAuthoredBy": false,
+  "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": true
+}
