@@ -41,9 +41,13 @@ alias gf="git fetch"
 alias gl="git --no-pager log --oneline -n 5"              # Show compact commit history
 alias glo="git log --oneline"                             # Show compact commit history
 alias glg="git log --graph --oneline --decorate"          # Show compact commit history with graph
-alias gp="git pull" 
-alias gs="git status --untracked-files=no"                # Show status without untracked files
-alias gsu="git status"                                    # Show status with untracked files
+alias glp='git log --pretty=format:"%C(yellow)%h%Creset %C(cyan)%ce%Creset %C(green)%d%Creset%n%C(white)%s%Creset%n"'
+alias gpl="git pull" 
+alias gps="git push" 
+alias gst="git status --untracked-files=no"                # Show status without untracked files
+alias gstu="git status"                                    # Show status with untracked files
+alias gsh="git show"                                # Show HEAD
+alias gshh="git show HEAD"                                # Show HEAD
 
 
 ################
